@@ -1,0 +1,7 @@
+node_modules
+
+# ./dist folder
+dist
+
+# ./secret folder to store certs and keys
+secret

@@ -1,0 +1,33 @@
+{
+  "name": "visa_currency_conversion",
+  "version": "0.0.0",
+  "description": "Get Visa's latest Foreign Exchange Rates",
+  "main": "index.js",
+  "author": "nginyc",
+  "scripts": {
+    "clean": "rm -rf ./dist && mkdir ./dist",
+    "build": "npm run clean && babel ./src -d ./dist --copy-files",
+    "dev": "npm run build && node -r dotenv/config index.js",
+    "test": "npm run build && jest ./dist",
+    "zip": "zip -r ./dist.zip ./dist ./node_modules ./secret index.js package.json"
+  },
+  "dependencies": {
+    "alexa-sdk": "^1.0.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^4.0.0",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "jest": "^21.0.2"
+  },
+  "jest": {
+    "transform": {}
+  }
+}

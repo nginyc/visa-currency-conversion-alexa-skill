@@ -1,0 +1,846 @@
+{
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "ConvertCurrencyIntent",
+        "samples": [
+          "Convert {amount} {source_currency_code} to {dest_currency_code}"
+        ],
+        "slots": [
+          {
+            "name": "source_currency_code",
+            "type": "CurrencyCode",
+            "samples": [
+              "{source_currency_code}"
+            ]
+          },
+          {
+            "name": "dest_currency_code",
+            "type": "CurrencyCode",
+            "samples": [
+              "{dest_currency_code}"
+            ]
+          },
+          {
+            "name": "amount",
+            "type": "AMAZON.NUMBER",
+            "samples": [
+              "{amount}",
+              "{amount} {source_currency_code}"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "HelloIntent",
+        "samples": [
+          "hello"
+        ],
+        "slots": []
+      }
+    ],
+    "types": [
+      {
+        "name": "CurrencyCode",
+        "values": [
+            {
+              "id": "usd",
+              "name": {
+                "value": "usd"
+              }
+            },
+            {
+              "id": "cad",
+              "name": {
+                "value": "cad"
+              }
+            },
+            {
+              "id": "eur",
+              "name": {
+                "value": "eur"
+              }
+            },
+            {
+              "id": "aed",
+              "name": {
+                "value": "aed"
+              }
+            },
+            {
+              "id": "afn",
+              "name": {
+                "value": "afn"
+              }
+            },
+            {
+              "id": "all",
+              "name": {
+                "value": "all"
+              }
+            },
+            {
+              "id": "amd",
+              "name": {
+                "value": "amd"
+              }
+            },
+            {
+              "id": "ars",
+              "name": {
+                "value": "ars"
+              }
+            },
+            {
+              "id": "aud",
+              "name": {
+                "value": "aud"
+              }
+            },
+            {
+              "id": "azn",
+              "name": {
+                "value": "azn"
+              }
+            },
+            {
+              "id": "bam",
+              "name": {
+                "value": "bam"
+              }
+            },
+            {
+              "id": "bdt",
+              "name": {
+                "value": "bdt"
+              }
+            },
+            {
+              "id": "bgn",
+              "name": {
+                "value": "bgn"
+              }
+            },
+            {
+              "id": "bhd",
+              "name": {
+                "value": "bhd"
+              }
+            },
+            {
+              "id": "bif",
+              "name": {
+                "value": "bif"
+              }
+            },
+            {
+              "id": "bnd",
+              "name": {
+                "value": "bnd"
+              }
+            },
+            {
+              "id": "bob",
+              "name": {
+                "value": "bob"
+              }
+            },
+            {
+              "id": "brl",
+              "name": {
+                "value": "brl"
+              }
+            },
+            {
+              "id": "bwp",
+              "name": {
+                "value": "bwp"
+              }
+            },
+            {
+              "id": "byr",
+              "name": {
+                "value": "byr"
+              }
+            },
+            {
+              "id": "bzd",
+              "name": {
+                "value": "bzd"
+              }
+            },
+            {
+              "id": "cdf",
+              "name": {
+                "value": "cdf"
+              }
+            },
+            {
+              "id": "chf",
+              "name": {
+                "value": "chf"
+              }
+            },
+            {
+              "id": "clp",
+              "name": {
+                "value": "clp"
+              }
+            },
+            {
+              "id": "cny",
+              "name": {
+                "value": "cny"
+              }
+            },
+            {
+              "id": "cop",
+              "name": {
+                "value": "cop"
+              }
+            },
+            {
+              "id": "crc",
+              "name": {
+                "value": "crc"
+              }
+            },
+            {
+              "id": "cve",
+              "name": {
+                "value": "cve"
+              }
+            },
+            {
+              "id": "czk",
+              "name": {
+                "value": "czk"
+              }
+            },
+            {
+              "id": "djf",
+              "name": {
+                "value": "djf"
+              }
+            },
+            {
+              "id": "dkk",
+              "name": {
+                "value": "dkk"
+              }
+            },
+            {
+              "id": "dop",
+              "name": {
+                "value": "dop"
+              }
+            },
+            {
+              "id": "dzd",
+              "name": {
+                "value": "dzd"
+              }
+            },
+            {
+              "id": "eek",
+              "name": {
+                "value": "eek"
+              }
+            },
+            {
+              "id": "egp",
+              "name": {
+                "value": "egp"
+              }
+            },
+            {
+              "id": "ern",
+              "name": {
+                "value": "ern"
+              }
+            },
+            {
+              "id": "etb",
+              "name": {
+                "value": "etb"
+              }
+            },
+            {
+              "id": "gbp",
+              "name": {
+                "value": "gbp"
+              }
+            },
+            {
+              "id": "gel",
+              "name": {
+                "value": "gel"
+              }
+            },
+            {
+              "id": "ghs",
+              "name": {
+                "value": "ghs"
+              }
+            },
+            {
+              "id": "gnf",
+              "name": {
+                "value": "gnf"
+              }
+            },
+            {
+              "id": "gtq",
+              "name": {
+                "value": "gtq"
+              }
+            },
+            {
+              "id": "hkd",
+              "name": {
+                "value": "hkd"
+              }
+            },
+            {
+              "id": "hnl",
+              "name": {
+                "value": "hnl"
+              }
+            },
+            {
+              "id": "hrk",
+              "name": {
+                "value": "hrk"
+              }
+            },
+            {
+              "id": "huf",
+              "name": {
+                "value": "huf"
+              }
+            },
+            {
+              "id": "idr",
+              "name": {
+                "value": "idr"
+              }
+            },
+            {
+              "id": "ils",
+              "name": {
+                "value": "ils"
+              }
+            },
+            {
+              "id": "inr",
+              "name": {
+                "value": "inr"
+              }
+            },
+            {
+              "id": "iqd",
+              "name": {
+                "value": "iqd"
+              }
+            },
+            {
+              "id": "irr",
+              "name": {
+                "value": "irr"
+              }
+            },
+            {
+              "id": "isk",
+              "name": {
+                "value": "isk"
+              }
+            },
+            {
+              "id": "jmd",
+              "name": {
+                "value": "jmd"
+              }
+            },
+            {
+              "id": "jod",
+              "name": {
+                "value": "jod"
+              }
+            },
+            {
+              "id": "jpy",
+              "name": {
+                "value": "jpy"
+              }
+            },
+            {
+              "id": "kes",
+              "name": {
+                "value": "kes"
+              }
+            },
+            {
+              "id": "khr",
+              "name": {
+                "value": "khr"
+              }
+            },
+            {
+              "id": "kmf",
+              "name": {
+                "value": "kmf"
+              }
+            },
+            {
+              "id": "krw",
+              "name": {
+                "value": "krw"
+              }
+            },
+            {
+              "id": "kwd",
+              "name": {
+                "value": "kwd"
+              }
+            },
+            {
+              "id": "kzt",
+              "name": {
+                "value": "kzt"
+              }
+            },
+            {
+              "id": "lbp",
+              "name": {
+                "value": "lbp"
+              }
+            },
+            {
+              "id": "lkr",
+              "name": {
+                "value": "lkr"
+              }
+            },
+            {
+              "id": "ltl",
+              "name": {
+                "value": "ltl"
+              }
+            },
+            {
+              "id": "lvl",
+              "name": {
+                "value": "lvl"
+              }
+            },
+            {
+              "id": "lyd",
+              "name": {
+                "value": "lyd"
+              }
+            },
+            {
+              "id": "mad",
+              "name": {
+                "value": "mad"
+              }
+            },
+            {
+              "id": "mdl",
+              "name": {
+                "value": "mdl"
+              }
+            },
+            {
+              "id": "mga",
+              "name": {
+                "value": "mga"
+              }
+            },
+            {
+              "id": "mkd",
+              "name": {
+                "value": "mkd"
+              }
+            },
+            {
+              "id": "mmk",
+              "name": {
+                "value": "mmk"
+              }
+            },
+            {
+              "id": "mop",
+              "name": {
+                "value": "mop"
+              }
+            },
+            {
+              "id": "mur",
+              "name": {
+                "value": "mur"
+              }
+            },
+            {
+              "id": "mxn",
+              "name": {
+                "value": "mxn"
+              }
+            },
+            {
+              "id": "myr",
+              "name": {
+                "value": "myr"
+              }
+            },
+            {
+              "id": "mzn",
+              "name": {
+                "value": "mzn"
+              }
+            },
+            {
+              "id": "nad",
+              "name": {
+                "value": "nad"
+              }
+            },
+            {
+              "id": "ngn",
+              "name": {
+                "value": "ngn"
+              }
+            },
+            {
+              "id": "nio",
+              "name": {
+                "value": "nio"
+              }
+            },
+            {
+              "id": "nok",
+              "name": {
+                "value": "nok"
+              }
+            },
+            {
+              "id": "npr",
+              "name": {
+                "value": "npr"
+              }
+            },
+            {
+              "id": "nzd",
+              "name": {
+                "value": "nzd"
+              }
+            },
+            {
+              "id": "omr",
+              "name": {
+                "value": "omr"
+              }
+            },
+            {
+              "id": "pab",
+              "name": {
+                "value": "pab"
+              }
+            },
+            {
+              "id": "pen",
+              "name": {
+                "value": "pen"
+              }
+            },
+            {
+              "id": "php",
+              "name": {
+                "value": "php"
+              }
+            },
+            {
+              "id": "pkr",
+              "name": {
+                "value": "pkr"
+              }
+            },
+            {
+              "id": "pln",
+              "name": {
+                "value": "pln"
+              }
+            },
+            {
+              "id": "pyg",
+              "name": {
+                "value": "pyg"
+              }
+            },
+            {
+              "id": "qar",
+              "name": {
+                "value": "qar"
+              }
+            },
+            {
+              "id": "ron",
+              "name": {
+                "value": "ron"
+              }
+            },
+            {
+              "id": "rsd",
+              "name": {
+                "value": "rsd"
+              }
+            },
+            {
+              "id": "rub",
+              "name": {
+                "value": "rub"
+              }
+            },
+            {
+              "id": "rwf",
+              "name": {
+                "value": "rwf"
+              }
+            },
+            {
+              "id": "sar",
+              "name": {
+                "value": "sar"
+              }
+            },
+            {
+              "id": "sdg",
+              "name": {
+                "value": "sdg"
+              }
+            },
+            {
+              "id": "sek",
+              "name": {
+                "value": "sek"
+              }
+            },
+            {
+              "id": "sgd",
+              "name": {
+                "value": "sgd"
+              }
+            },
+            {
+              "id": "sos",
+              "name": {
+                "value": "sos"
+              }
+            },
+            {
+              "id": "syp",
+              "name": {
+                "value": "syp"
+              }
+            },
+            {
+              "id": "thb",
+              "name": {
+                "value": "thb"
+              }
+            },
+            {
+              "id": "tnd",
+              "name": {
+                "value": "tnd"
+              }
+            },
+            {
+              "id": "top",
+              "name": {
+                "value": "top"
+              }
+            },
+            {
+              "id": "try",
+              "name": {
+                "value": "try"
+              }
+            },
+            {
+              "id": "ttd",
+              "name": {
+                "value": "ttd"
+              }
+            },
+            {
+              "id": "twd",
+              "name": {
+                "value": "twd"
+              }
+            },
+            {
+              "id": "tzs",
+              "name": {
+                "value": "tzs"
+              }
+            },
+            {
+              "id": "uah",
+              "name": {
+                "value": "uah"
+              }
+            },
+            {
+              "id": "ugx",
+              "name": {
+                "value": "ugx"
+              }
+            },
+            {
+              "id": "uyu",
+              "name": {
+                "value": "uyu"
+              }
+            },
+            {
+              "id": "uzs",
+              "name": {
+                "value": "uzs"
+              }
+            },
+            {
+              "id": "vef",
+              "name": {
+                "value": "vef"
+              }
+            },
+            {
+              "id": "vnd",
+              "name": {
+                "value": "vnd"
+              }
+            },
+            {
+              "id": "xaf",
+              "name": {
+                "value": "xaf"
+              }
+            },
+            {
+              "id": "xof",
+              "name": {
+                "value": "xof"
+              }
+            },
+            {
+              "id": "yer",
+              "name": {
+                "value": "yer"
+              }
+            },
+            {
+              "id": "zar",
+              "name": {
+                "value": "zar"
+              }
+            },
+            {
+              "id": "zmk",
+              "name": {
+                "value": "zmk"
+              }
+            }
+          ]
+      }
+    ],
+    "prompts": [
+      {
+        "id": "Elicit.Intent-ConvertCurrencyIntent.IntentSlot-source_currency_code",
+        "promptVersion": "1.0",
+        "definitionVersion": "1.0",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Convert from?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Intent-ConvertCurrencyIntent.IntentSlot-dest_currency_code",
+        "promptVersion": "1.0",
+        "definitionVersion": "1.0",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Convert to?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Intent-ConvertCurrencyIntent.IntentSlot-amount",
+        "promptVersion": "1.0",
+        "definitionVersion": "1.0",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Amount of {source_currency_code} to convert?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Amount to convert?"
+          }
+        ]
+      }
+    ],
+    "dialog": {
+      "version": "1.0",
+      "intents": [
+        {
+          "name": "ConvertCurrencyIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "source_currency_code",
+              "type": "CurrencyCode",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicit": "Elicit.Intent-ConvertCurrencyIntent.IntentSlot-source_currency_code"
+              }
+            },
+            {
+              "name": "dest_currency_code",
+              "type": "CurrencyCode",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicit": "Elicit.Intent-ConvertCurrencyIntent.IntentSlot-dest_currency_code"
+              }
+            },
+            {
+              "name": "amount",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicit": "Elicit.Intent-ConvertCurrencyIntent.IntentSlot-amount"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
