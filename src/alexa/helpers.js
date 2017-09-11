@@ -3,8 +3,9 @@ const getResolvedSlotsFromIntent = (intent) => {
 
   const resolvedSlots = {};
 
-  Object.values(slots)
-    .forEach((slot) => {
+  Object.keys(slots)
+    .forEach((i) => {
+      const slot = slots[i];
       const slotName = slot.name;
 
       let slotValue = slot.value;

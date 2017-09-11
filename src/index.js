@@ -49,6 +49,9 @@ const handlers = {
           sourceAmount, destAmount, sourceCurrency, destCurrency,
         });
 
+        const cardTitle = speech.convertCurrencyResponseCardTitle();
+
+        this.emit(':tellWithCard', response, cardTitle, response);
         this.emit(':tell', response);
       })
       .catch((error) => {

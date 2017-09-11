@@ -16,6 +16,8 @@ const speech = {
     sourceAmount, sourceCurrency, destAmount, destCurrency,
   }) => `${sourceAmount} ${sayAsCharacters(sourceCurrency)}` +
     ` is ${destAmount} ${sayAsCharacters(destCurrency)}.`,
+
+  convertCurrencyResponseCardTitle: () => 'Visa Currency Conversion',
 };
 
 export default speech;
