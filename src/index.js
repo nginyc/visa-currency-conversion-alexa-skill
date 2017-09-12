@@ -1,9 +1,9 @@
 import Alexa from 'alexa-sdk';
 import path from 'path';
 
-import VdpService from './vdp/vdp_service';
+import VdpService from './vdp/VdpService';
 import speech from './resources/speech';
-import { getResolvedSlotsFromIntent } from './alexa/helpers';
+import { getSlotValue, clearSlotValueFromIntent } from './alexa/helpers';
 
 const vdpService = new VdpService({
   CERT_FILE_PATH: path.resolve(process.cwd(), process.env.VDP_CERT_FILE_PATH),
@@ -21,22 +21,44 @@ const handlers = {
   },
 
   ConvertCurrencyIntent() {
-    logObject('Request', this.event.request);
+    logObject('Event', this.event);
 
-    // Check if all slots are filled
-    const { dialogState } = this.event.request;
-    if (dialogState !== 'COMPLETED') {
-      this.emit(':delegate'); // Delegate to skill interface to prompt for slots
+    const { intent } = this.event.request;
+
+    const sourceAmount = getSlotValue({
+      intent,
+      slotName: 'amount',
+      resolveSlot: (slotValue) => {
+        if (slotValue && !isNaN(slotValue)) {
+          return slotValue;
+        }
+        return null;
+      },
+    }) || '1';
+
+    const sourceCurrency = getSlotValue({
+      intent,
+      slotName: 'source_currency_code',
+    });
+
+    if (sourceCurrency === null) {
+      clearSlotValueFromIntent({ intent, slotName: 'source_currency_code' });
+      console.log('Invaild source currency.');
+      this.emit(':delegate', intent);
       return;
     }
 
-    const intent = this.event.request.intent;
+    const destCurrency = getSlotValue({
+      intent,
+      slotName: 'dest_currency_code',
+    });
 
-    const {
-      amount: sourceAmount = '1',
-      source_currency_code: sourceCurrency,
-      dest_currency_code: destCurrency,
-    } = getResolvedSlotsFromIntent(intent);
+    if (destCurrency === null) {
+      clearSlotValueFromIntent({ intent, slotName: 'dest_currency_code' });
+      console.log('Invalid destination currency.');
+      this.emit(':delegate', intent);
+      return;
+    }
 
     console.log(`Converting ${sourceAmount} ${sourceCurrency} to ${destCurrency}...`);
 
@@ -49,9 +71,15 @@ const handlers = {
           sourceAmount, destAmount, sourceCurrency, destCurrency,
         });
 
-        const cardTitle = speech.convertCurrencyResponseCardTitle();
+        const cardTitle = speech.convertCurrencyResponseCardTitle({
+          destCurrency, sourceCurrency,
+        });
 
-        this.emit(':tellWithCard', response, cardTitle, response);
+        const cardMessage = speech.convertCurrencyResponseCardMessage({
+          sourceAmount, destAmount, sourceCurrency, destCurrency,
+        });
+
+        this.emit(':tellWithCard', response, cardTitle, cardMessage);
         this.emit(':tell', response);
       })
       .catch((error) => {
@@ -61,18 +89,18 @@ const handlers = {
       });
   },
 
-  'AMAZON.HelpIntent': () => {
+  'AMAZON.HelpIntent': function () {
     const message = speech.helpMessage();
     const reprompt = speech.helpReprompt();
     this.emit(':ask', message, reprompt);
   },
 
-  'AMAZON.CancelIntent': () => {
+  'AMAZON.CancelIntent': function () {
     const message = speech.stopMessage();
     this.emit(':tell', message);
   },
 
-  'AMAZON.StopIntent': () => {
+  'AMAZON.StopIntent': function () {
     const message = speech.stopMessage();
     this.emit(':tell', message);
   },

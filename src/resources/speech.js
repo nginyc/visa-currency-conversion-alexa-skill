@@ -17,7 +17,13 @@ const speech = {
   }) => `${sourceAmount} ${sayAsCharacters(sourceCurrency)}` +
     ` is ${destAmount} ${sayAsCharacters(destCurrency)}.`,
 
-  convertCurrencyResponseCardTitle: () => 'Visa Currency Conversion',
+  convertCurrencyResponseCardTitle: ({ sourceCurrency, destCurrency }) => `Converted` +
+    ` ${sourceCurrency.toUpperCase()} to ${destCurrency.toUpperCase()}`,
+
+  convertCurrencyResponseCardMessage: ({
+    sourceAmount, sourceCurrency, destCurrency, destAmount,
+  }) => `${sourceAmount} ${sourceCurrency.toUpperCase()}` +
+  ` is ${destAmount} ${destCurrency.toUpperCase()}.`,
 };
 
 export default speech;

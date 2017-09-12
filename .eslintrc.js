@@ -3,6 +3,7 @@ module.exports = {
     "rules": {
         "no-underscore-dangle": [0, "allow"],
         "class-methods-use-this": [1],
-        "prefer-destructuring": [1]
+        "prefer-destructuring": [1],
+        "no-restricted-syntax": [1]
     }
 };

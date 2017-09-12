@@ -1,5 +1,6 @@
 import request from 'request-promise-native';
 import fs from 'fs';
+
 import config from './config';
 
 class VdpService {

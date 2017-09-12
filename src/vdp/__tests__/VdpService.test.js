@@ -1,7 +1,7 @@
 import path from 'path';
 import dotenv from 'dotenv';
 
-import VdpService from '../vdp_service';
+import VdpService from '../VdpService';
 
 dotenv.config();
 
